@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-3">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="/static/img/foto.jpg" class="rounded-4 w-100" alt="foto" />
+        </div>
+        <div class="col-md-6">
+            <h2 class="mt-4">{{ inmueble.precio }}</h2>
+            <h4>{{ inmueble.descripcion }}</h4>
+            <p class="mt-2">Dejanos tus datos para comunicarnos:</p>
+            <div id="alertBox" class="alert alert-warning alert-dismissible fade show" style="display:none" role="alert">
+                <span id="customer"></span>!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <form id="formContact">
+                <div class="mb-3">
+                    <label for="inputNombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="inputNombre" required />
+                </div>
+                <div class="mb-3">
+                    <label for="inputEmail" class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email" id="inputEmail" placeholder="name@example.com" required />
+                </div>
+                <div class="mb-3">
+                    <label for="inputMensaje" class="form-label">Mensaje</label>
+                    <textarea class="form-control" name="mensaje" id="inputMensaje" rows="3" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-success">Enviar datos</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+document.getElementById('formContact').addEventListener("submit", function(e){
+    e.preventDefault(); // Evita que el formulario se envie
+    const formData = new FormData(); // Creamos un nuevo formulario
+    // Agregar los campos y su valores al nuevo formulario
+    formData.append('nombre',document.getElementsByName('nombre')[0].value);
+    formData.append('email',document.getElementsByName('email')[0].value);
+    formData.append('mensaje',document.getElementsByName('mensaje')[0].value);
+    axios.post('/contacto', formData).then(response=>{
+        dato = response.data;
+        console.log(dato)
+        // Modifico el contenido el <span> con id customer
+        document.getElementById('customer').innerHTML = dato.mensaje;
+        // Modifico el display del #alertBox dejandolo vacio para poder mostrarlo
+        document.getElementById('alertBox').style.display = '';
+        // Limpio el formulario
+        document.getElementById('formContact').reset()
+    });
+});
+</script>
+{% endblock %}

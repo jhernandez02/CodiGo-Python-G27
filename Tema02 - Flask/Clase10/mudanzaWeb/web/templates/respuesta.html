@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Gracias por escribirnos!</h1>
+<p>Estimado {{ datos['nombre'] }}:</p>
+<p>El mensaje que nos escribiste fue el siguiente:</p>
+<p>{{ datos['mensaje'] }}</p>
+<p>Pronto un ejecutivo se estar comunicando contigo
+    al telefono {{ datos['telefono']}} o 
+    al correo {{ datos['email'] }}.
+</p>
+<p>Atentamente el equipo de marketing.</p>
+{% endblock %}

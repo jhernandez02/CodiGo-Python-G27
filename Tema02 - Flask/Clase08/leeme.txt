@@ -1,0 +1,27 @@
+# Framework
+Un framework es una estructura que se utiliza para desarrollar software.
+Simplica tareas y procesos
+Permite la reutilización de código
+Facilita la organizacion y control del código porque incluye estándares
+La curva de aprendizaje es corta
+
+# Microframework
+Es un tipo de framework de desarrollo.
+Proporciona sola las funcionalidades esenciales para
+desarrollar una aplicación.
+Son minimalistas pero permite agregar las librerías
+que se necesite
+
+# Backend (.NEt, PHP, Java, Python, Javascript)
+Es la parte de una aplicación Web que se encarga
+de la lógica de negocio y funcionamiento de la aplicación
+
+# Virtual environments
+Un entorno virtual en Python, es una entorno aislado
+donde se puede instalar paquetes y dependencias
+sin afectar la configuración global de Python en tu sistema
+
+Para que sirve un entorno virtual?
+- Evita conflictos de dependencias
+- Mantiene una estabilidad del sistema
+- Facilita la portabilidad (requirements.txt)

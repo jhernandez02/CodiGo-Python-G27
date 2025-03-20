@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodiGo - Mudanzas</title>
+    <link rel="stylesheet" href="/static/css/estilos.css" />
+</head>
+<body>
+    <header>
+        <img src="/static/img/logo.png" alt="logo" />
+    </header>
+    <nav>
+        <a href="/">Inicio</a> | 
+        <a href="/nosotros">Nosotros</a> | 
+        <a href="/servicios">Servicios</a> | 
+        <a href="/locales">Locales</a> | 
+        <a href="/contacto">Contáctame</a>
+    </nav>
+    <main>
+        {% block content %}{% endblock%}
+    </main>
+    <footer>
+        CodiGo - Mudanzas - Todos los derechos reservados
+    </footer>
+</body>
+</html>

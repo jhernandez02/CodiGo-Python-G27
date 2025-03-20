@@ -1,0 +1,11 @@
+1. Ingresar desde consola a tu carpeta de trabajo
+2. Crear el entorno virtual
+python -m venv mivenv
+3. Activar el entorno virtual
+mivenv\Scripts\activate
+4. Instalar flask
+pip install flask
+5. Ingresar a la carpeta web
+cd web
+6. Levantar el servidor de desarrollo
+flask --app app run --debug 

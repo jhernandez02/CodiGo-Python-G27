@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    font-size: 16px;
+}
+
+header img {
+    height: 80px;
+}
+
+header, nav, main, footer {
+    width: 1050px;
+    margin: 0 auto;
+}
+
+header {
+    background-color: #a4cdf6;
+}
+
+nav, footer {
+    background-color: #4a4545;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+nav a {
+    color: #FFFFFF;
+}
+
+main {
+    box-sizing: border-box;
+    padding: 20px 40px;
+}
+
+footer {
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 12px;
+}

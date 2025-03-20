@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Contáctanos</h1>
+<p>Llena el siguiente formulario con los datos correspondientes:</p>
+<form action="/contacto/respuesta" method="POST">
+    Nombre: <input type="text" name="nombre" required /><br/>
+    Teléfono: <input type="text" name="telefono" /><br/>
+    Email: <input type="text" name="email" /><br/>
+    Mensaje: <textarea name="mensaje" required></textarea><br/>
+    <button type="submit">Enviar formulario</button>
+</form>
+{% endblock %}
