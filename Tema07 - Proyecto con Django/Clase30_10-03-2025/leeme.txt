@@ -1,0 +1,20 @@
+{
+    "cliente" : 2,
+    "codigo": "V-0000-0002",
+    "total": 974.16,
+    "estado": "Pendiente",
+    "detalles": [
+        {
+            "producto": 6,
+            "cantidad": 1,
+            "precio": 313.65,
+            "subtotal": "313.65"
+        },
+        {
+            "producto": 3,
+            "cantidad": 1,
+            "precio": 660.51,
+            "subtotal": "660.51"
+        }
+    ]
+}

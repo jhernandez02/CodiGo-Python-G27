@@ -1,0 +1,10 @@
+Instalar:
+
+https://www.npmjs.com/package/react-router-dom
+https://www.npmjs.com/package/axios
+https://www.npmjs.com/package/bootstrap
+https://www.npmjs.com/package/react-bootstrap
+https://www.npmjs.com/package/sweetalert2
+
+https://www.npmjs.com/package/jwt-decode
+https://www.npmjs.com/package/uuid
