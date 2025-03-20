@@ -1,0 +1,3 @@
+Error: ZeroDivisionError | Description: division by zero | Fecha: 2025-02-06 20:17:04.402607
+Error: ValueError | Description: invalid literal for int() with base 10: 'p' | Fecha: 2025-02-06 20:17:10.426844
+Error: ValueError | Description: invalid literal for int() with base 10: '' | Fecha: 2025-02-06 20:17:23.241416

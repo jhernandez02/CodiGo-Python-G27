@@ -1,0 +1,2 @@
+Juan;984654321;juan@mail.com
+Pedro;987654654;pedro@mail.com

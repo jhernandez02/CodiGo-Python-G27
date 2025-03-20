@@ -1,0 +1,10 @@
+print('--Ordenación--')
+notas = (9,11,16,18,20,13,10,15)
+ordenado = sorted(notas)
+print('notas:',notas)
+print('ordenado:',ordenado)
+
+print('--max, min, sum--')
+print('máxima nota:',max(notas))
+print('minima nota:',min(notas))
+print('suma de notas:',sum(notas))
