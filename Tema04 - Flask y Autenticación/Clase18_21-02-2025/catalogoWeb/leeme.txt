@@ -1,0 +1,12 @@
+1. Crear el entorno virtual
+python -m venv mivenv
+
+2. Activar el entorno virtual
+mivenv\Scripts\activate
+
+3. Instalar los paquetes
+pip install flask flask-sqlalchemy flask-migrate pymysql
+pip install -r requirements.txt
+
+4. Levantar la aplicación
+flask --app app run --debug

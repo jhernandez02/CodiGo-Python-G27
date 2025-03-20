@@ -1,0 +1,18 @@
+1. Crear el entorno virtual
+python -m venv mivenv
+
+2. Activar el entorno virtual
+mivenv\Scripts\activate
+
+3. Instalar los paquetes
+pip install flask flask-sqlalchemy flask-migrate flask-jwt-extended flask-mail cryptography pymysql
+
+4. Crear los modelos de la BD
+
+5. Ejecutar las migraciones
+flask db init
+flask db migrate -m "inicial"
+flask db upgrade
+
+5. Levantar la aplicación
+flask --app app run --debug
