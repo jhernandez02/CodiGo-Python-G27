@@ -8,7 +8,7 @@ __pycache__/
 # Virtualenv
 venv/
 mivenv/
-.env/
+.env
 
 # Archivos de configuración de editor
 .vscode/
@@ -19,5 +19,9 @@ mivenv/
 
 # Otros Archivos
 *.zip
-*.xlsx
 *.sql
+*.mwb
+*.drawio
+*.xlsx
+*.pptx
+*.docx
