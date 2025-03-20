@@ -1,0 +1,7 @@
+{% for categoria in categorias %}
+<li class="nav-item mb-2">
+    <a href="{% url 'auto:categoria' categoria.id %}" class="nav-link p-0 text-body-secondary">
+        {{categoria.descripcion}}
+    </a>
+</li>
+{% endfor %}

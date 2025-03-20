@@ -1,0 +1,7 @@
+{% for marca in marcas %}
+<li class="nav-item mb-2">
+    <a href="{% url 'auto:marca' marca.id %}" class="nav-link p-0 text-body-secondary">
+        {{marca.descripcion}}
+    </a>
+</li>
+{% endfor %}

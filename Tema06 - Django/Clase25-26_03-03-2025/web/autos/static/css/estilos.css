@@ -1,0 +1,7 @@
+.banner {
+    background-image: url('/static/img/fondo-para-web2-1.png');
+    background-size: 100% auto;
+    background-position: center;
+    width: auto;
+    height: 450px;
+}

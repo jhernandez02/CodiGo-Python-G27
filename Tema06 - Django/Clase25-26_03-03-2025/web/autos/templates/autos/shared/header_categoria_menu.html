@@ -1,0 +1,9 @@
+{% for categoria in categorias %}
+<li>
+    <a class="dropdown-item" href="{% url 'auto:categoria' categoria.id %}">
+        {{categoria.descripcion}}
+    </a>
+</li>
+{% empty %}
+<li>No hay categorías</li>
+{% endfor %}

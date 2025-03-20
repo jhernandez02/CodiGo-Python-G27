@@ -1,0 +1,10 @@
+Permiso Global: isAuthenticated
+/empleados/api/v1/pagos/usuario [GET] -> Lista por usuario
+/empleados/api/v1/pagos/usuario/<int:id> [GET] -> Mostrar detalle
+
+Permiso: isAdmin
+/empleados/api/v1/pagos [GET] -> Listar todos
+/empleados/api/v1/pagos/<int:id> [GET] -> Mostrar detalle
+/empleados/api/v1/pagos [POST] -> Crear
+/empleados/api/v1/pagos/<int:id> [PUT] -> Actualizar
+/empleados/api/v1/pagos/<int:id> [DELETE]

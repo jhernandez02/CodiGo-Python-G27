@@ -1,0 +1,21 @@
+{% extends "autos/layout.html" %}
+
+{% block content %}
+<div class="container py-3 border-bottom">
+    <h2>Marca: {{marca.descripcion}}</h2>
+    <div class="row mt-5">
+        {% for auto in autos %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="/static/img/default.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{auto.modelo.marca}} - {{auto.modelo}}</h5>
+                  <p class="card-text">$ {{auto.precio}}</p>
+                  <a href="/autos/detalle/{{auto.id}}" class="btn btn-primary">Ver detalle</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

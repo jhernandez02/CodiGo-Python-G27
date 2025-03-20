@@ -1,0 +1,6 @@
+<h1>Index</h1>
+{% for auto in autos %}
+<div>
+    <a href="/autos/detalle/{{auto.id}}">{{auto.marca}} {{auto.modelo}}</a>
+</div>
+{% endfor %}

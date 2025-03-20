@@ -1,0 +1,9 @@
+{% for marca in marcas %}
+<li>
+    <a class="dropdown-item" href="{% url 'auto:marca' marca.id %}">
+        {{marca.descripcion}}
+    </a>
+</li>
+{% empty %}
+<li>No hay marcas</li>
+{% endfor %}
