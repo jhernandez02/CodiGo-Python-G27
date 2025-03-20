@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Préstamo - Nuevo</h1>
+    <div class="text-end">
+        <a class="btn btn-secondary" href="/prestamos">Regresar</a>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form method="POST" action="/prestamos/guardar">
+                <div class="mb-3">
+                    <label for="inputUsuario" class="form-label">Usuario:</label>
+                    <select class="form-select" name="usuario" id="inputUsuario" required >
+                        <option value="">Seleccione una opción</option>
+                        {% for usuario in usuarios %}
+                        <option value="{{ usuario.id }}">{{ usuario.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="inputLibro" class="form-label">Libro:</label>
+                    <select class="form-select" name="libro" id="inputLibro" required >
+                        <option value="">Seleccione una opción</option>
+                        {% for libro in libros %}
+                        <option value="{{ libro.id }}">{{ libro.titulo }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

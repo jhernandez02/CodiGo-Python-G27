@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Libros - Editar</h1>
+    <div class="text-end">
+        <a class="btn btn-secondary" href="/libros">Regresar</a>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form method="POST" action="/libros/editar/{{ libro.id }}">
+                <div class="mb-3">
+                    <label for="inputTitulo" class="form-label">Título</label>
+                    <input type="text" class="form-control" name="titulo" id="inputTitulo" value="{{ libro.titulo }}" />
+                </div>
+                <div class="mb-3">
+                    <label for="inputAutor" class="form-label">Autor</label>
+                    <select class="form-select" name="autor" id="inputAutor">
+                        <option value="">Seleccione una opción</option>
+                        {% for autor in autores %}
+                        <option value="{{ autor.id }}" {% if autor.id==libro.autor_id %}selected{% endif %} >{{ autor.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="inputGenero" class="form-label">Género</label>
+                    <select class="form-select" name="genero" id="inputGenero" >
+                        <option value="">Seleccione una opción</option>
+                        {% for genero in generos %}
+                        <option value="{{ genero.id }}" {% if genero.id==libro.genero_id %}selected{% endif %}>{{ genero.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="inputAnioPublicacion" class="form-label">Año Publicación</label>
+                    <input type="text" class="form-control" name="anioPublicacion" id="inputAnioPublicacion" value="{{ libro.anio_publicacion }}" />
+                </div>
+                <div class="mb-3">
+                    <label for="inputIsbn" class="form-label">ISBN</label>
+                    <input type="text" class="form-control" name="isbn" id="inputIsbn" value="{{ libro.isbn }}" />
+                </div>
+                <div class="mb-3">
+                    <label for="inputStock" class="form-label">Stock</label>
+                    <input type="text" class="form-control" name="stock" id="inputStock"  value="{{ libro.stock }}"/>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

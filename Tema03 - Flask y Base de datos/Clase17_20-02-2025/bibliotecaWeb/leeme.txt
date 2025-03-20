@@ -1,0 +1,42 @@
+1. Crear el entorno virtual
+python -m venv mivenv
+
+2. Activar el entorno virtual
+mivenv\Scripts\activate
+
+3. Instalar los paquetes
+pip install -r requirements.txt
+
+4. Levantar la aplicación
+flask --app app run --debug
+
+
+class Libro(db.Model):
+    __tablename__ = 'libros'
+    id = db.Column(db.Integer, primary_key=True)
+    titulo = db.Column(db.String(255),nullable=False)
+    autor_id = db.Column(db.Integer,db.ForeignKey('autores.id'),nullable=False)
+    genero_id = db.Column(db.Integer,db.ForeignKey('generos.id'),nullable=False)
+    anio_publicacion = db.Column(db.Integer)
+    isbn = db.Column(db.String(20))
+    stock = db.Column(db.Integer, default=1)
+
+    genero = db.relationship('Genero', backref=db.backref('libros', lazy=True))
+    autor = db.relationship('Autor', backref=db.backref('libros', lazy=True))
+
+libros = db.session.query(
+    Libro.id,Libro.titulo,Autor.nombre.label('autor_id')
+).join(
+    Genero, Genero.id==Libro.genero_id
+).join(
+    Autor, Autor.id==Libro.autor_id
+).all()
+
+prestamos = db.session.query(
+    Prestamo.id, Prestamo.fecha_prestamo, Prestamo.fecha_devolucion, Prestamo.estado,
+    Usuario.nombre.label('usuario_id'), Libro.titulo.label('libro_id')
+).join(
+    Usuario, Usuario.id==Prestamo.usuario_id
+).join(
+    Libro, Libro.id==Prestamo.libro_id
+).all()

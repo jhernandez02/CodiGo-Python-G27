@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Autores</h1>
+    <div class="text-end">
+        <a class="btn btn-primary" href="/autores/nuevo">Nuevo</a>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Nacionalidad</th>
+                        <th>Fecha Nacimiento</th>
+                        <th>Id</th>
+                        <th style="width: 100px;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for autor in lista %}
+                    <tr>
+                        <td>{{ autor.nombre }}</td>
+                        <td>{{ autor.nacionalidad }}</td>
+                        <td>{{ autor.fecha_nacimiento }}</td>
+                        <td>{{ autor.id }}</td>
+                        <td>
+                            <a class="btn btn-secondary btn-sm" href="/autores/detalle/{{ autor.id }}">
+                                <i class="bi bi-pencil-square"></i>
+                            </a> 
+                            <a class="btn btn-danger btn-sm" href="/autores/eliminar/{{ autor.id }}" onclick="return confirm('¿Deseas eliminar este registro?')">
+                                <i class="bi bi-trash3"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

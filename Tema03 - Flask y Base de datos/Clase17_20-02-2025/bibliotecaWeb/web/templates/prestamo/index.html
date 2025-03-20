@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Préstamos</h1>
+    <div class="text-end">
+        <a class="btn btn-primary" href="/prestamos/nuevo">Nuevo</a>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Usuario</th>
+                        <th>Libro</th>
+                        <th>Fecha Préstamo</th>
+                        <th>Fecha Devolución</th>
+                        <th>Estado</th>
+                        <th>Id</th>
+                        <th style="width: 100px;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for prestamo in lista %}
+                    <tr>
+                        <td>{{ prestamo.usuario.nombre }}</td>
+                        <td>{{ prestamo.libro.titulo }}</td>
+                        <td class="text-center">{{ prestamo.fecha_prestamo }}</td>
+                        <td class="text-center">{{ prestamo.fecha_devolucion or 'No devuelto' }}</td>
+                        <td class="text-center">{{ prestamo.estado }}</td>
+                        <td>{{ prestamo.id }}</td>
+                        <td>
+                            <a class="btn btn-secondary btn-sm" href="/prestamos/detalle/{{ prestamo.id }}">
+                                <i class="bi bi-pencil-square"></i>
+                            </a> 
+                            <a class="btn btn-success btn-sm" href="/prestamos/devolver/{{ prestamo.id }}" onclick="return confirm('¿Deseas devolver este libro?')">
+                                <i class="bi bi-arrow-return-left"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

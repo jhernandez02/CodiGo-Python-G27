@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Libros</h1>
+    <div class="text-end">
+        <a class="btn btn-primary" href="/libros/nuevo">Nuevo</a>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>Género</th>
+                        <th>Publicación</th>
+                        <th>ISBN</th>
+                        <th>Stock</th>
+                        <th>Id</th>
+                        <th style="width: 100px;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for libro in lista %}
+                    <tr>
+                        <td>{{ libro.titulo }}</td>
+                        <td>{{ libro.autor.nombre }}</td>
+                        <td>{{ libro.genero.nombre }}</td>
+                        <td class="text-center">{{ libro.anio_publicacion }}</td>
+                        <td>{{ libro.isbn }}</td>
+                        <td class="text-center">{{ libro.stock }}</td>
+                        <td>{{ libro.id }}</td>
+                        <td>
+                            <a class="btn btn-secondary btn-sm" href="/libros/detalle/{{ libro.id }}">
+                                <i class="bi bi-pencil-square"></i>
+                            </a> 
+                            <a class="btn btn-danger btn-sm" href="/libros/eliminar/{{ libro.id }}" onclick="return confirm('¿Deseas eliminar este registro?')">
+                                <i class="bi bi-trash3"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
