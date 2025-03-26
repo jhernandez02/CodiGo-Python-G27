@@ -27,6 +27,7 @@ __pycache__/
 *.swp
 *~
 .DS_Store
+config.json
 
 # Archivos de configuración de editor
 .vscode/
