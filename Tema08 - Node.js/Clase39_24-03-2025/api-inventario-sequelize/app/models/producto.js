@@ -3,7 +3,10 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Producto extends Model {
     static associate(models) {
-      // define association here
+      Producto.belongsTo(models.Categoria, {
+        foreignKey: 'CategoriaId', // la clave foranea
+        as: 'categoria', // el nombre del alias para la relación
+      });
     }
   }
   Producto.init({
