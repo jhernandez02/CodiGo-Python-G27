@@ -1,0 +1,13 @@
+npx sequelize-cli model:generate --name Categoria --attributes nombre:string
+
+
+nombre (string)
+cantidad (integer)
+precio (float)
+CategoriaId (integer)
+
+npx sequelize-cli model:generate --name Producto --attributes nombre:string
+npx sequelize-cli db:migrate
+npx sequelize-cli seed:generate --name categorias
+npx sequelize-cli seed:generate --name productos
+npx sequelize-cli db:seed:all
