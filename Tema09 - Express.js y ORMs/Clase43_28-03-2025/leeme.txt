@@ -1,0 +1,4 @@
+npm create vite@latest app-imagenes-react
+
+npm install axios dotenv react-bootstrap bootstrap sweetalert2
+

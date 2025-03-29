@@ -1,26 +1,48 @@
-Instalamos la interfaz de linea de comandos de sequelize:
+# Integración ORM - sequelize
+
+- Instalamos los siguientes paquetes:
+npm install express sequelize pg pg-hstore
+npm install -D nodemon 
+
+- Instalamos la interfaz de línea de comandos de sequelize:
 npm install --save-dev sequelize-cli
 
-Inicializamo un proyecto con la estructura de sequelize:
+- Inicializamos un proyecto con la estructura de sequelize:
 npx sequelize-cli init
 
-Creamos el modelo y la migración para tabla Categoria
+- Creamos el modelo y la migración para tabla Categoria
 npx sequelize-cli model:generate --name Categoria --attributes nombre:string
 
+- Creamos el modelo y la migración para tabla Producto
+npx sequelize-cli model:generate --name Producto --attributes nombre:string
+
+- Agregamos los campos necesarios a la migración y modelo de Producto
 nombre (string)
 cantidad (integer)
 precio (float)
 CategoriaId (integer)
 
-Creamos el modelo y la migración para tabla Producto
-npx sequelize-cli model:generate --name Producto --attributes nombre:string
-
-Ejecutamos las migraciones
+- Ejecutamos las migraciones
 npx sequelize-cli db:migrate
 
-Generamos los seeders para las tablas categoria y producto:
+- Generamos los seeders para las tablas categoria y producto:
 npx sequelize-cli seed:generate --name categorias
 npx sequelize-cli seed:generate --name productos
 
-Ejecutamos los seeders
+- Ejecutamos los seeders
 npx sequelize-cli db:seed:all
+
+----------------------------
+# Implemenatación de JWT
+
+- Instalamos los siguientes paquetes
+npm install jsonwebtoken bcryptjs dotenv cors
+
+- Creamos el modelo, la migracion y el seeder para tabla usuarios
+npx sequelize-cli model:generate --name Usuario --attributes nombre:string,email:string,password:string
+npx sequelize-cli seed:generate --name usuarios
+
+- Ejecutamos las migraciones y los seeders
+npx sequelize-cli db:migrate
+npx sequelize-cli db:seed --seed 20250327003838-usuarios.js
+
