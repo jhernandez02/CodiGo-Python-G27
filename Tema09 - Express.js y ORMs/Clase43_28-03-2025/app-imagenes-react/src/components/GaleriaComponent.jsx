@@ -72,7 +72,7 @@ function GaleriaComponent (){
                     )}
                 </ol>
             </nav>
-            <FormularioComponent />
+            <FormularioComponent carpeta={carpetaActual} listar={listarArchivos} />
             <div className="row">
                 {lista.map((archivo, index)=>(
                     <div key={index} className="col-md-3">
