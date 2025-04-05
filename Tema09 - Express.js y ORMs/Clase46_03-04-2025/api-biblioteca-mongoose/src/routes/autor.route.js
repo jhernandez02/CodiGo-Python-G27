@@ -1,25 +1,25 @@
 const express = require("express");
 const router = express.Router();
-const generoController = require("../controllers/genero.controller");
+const autorController = require("../controllers/autor.controller");
 
 router.get('/', (req, res)=>{
-    generoController.listar(req, res);
+    autorController.listar(req, res);
 });
 
 router.post('/', (req, res)=>{
-    generoController.guardar(req, res);
+    autorController.guardar(req, res);
 });
 
 router.get('/:id', (req, res)=>{
-    generoController.buscarPorId(req, res);
+    autorController.buscarPorId(req, res);
 });
 
 router.put('/:id', (req, res)=>{
-    generoController.editar(req, res);
+    autorController.editar(req, res);
 });
 
 router.delete('/:id', (req, res)=>{
-    generoController.eliminar(req, res);
+    autorController.eliminar(req, res);
 });
 
 module.exports = router;

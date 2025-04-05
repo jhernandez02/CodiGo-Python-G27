@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const generoRutas = require("./routes/genero.route");
+const autorRutas = require("./routes/autor.route");
+const libroRutas = require("./routes/libro.route");
 const port = 3000;
 
 require("dotenv").config();
@@ -25,6 +27,8 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/generos', generoRutas);
+app.use('/autores', autorRutas);
+app.use('/libros', libroRutas);
 
 app.listen(port, ()=>{
     console.log(`Servidor iniciado en el puerto ${port}`);
