@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alquiler - Sockets</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <nav class="navbar" style="background-color: #e3f2fd;" data-bs-theme="light">
+        <div class="container">
+          <a class="navbar-brand" href="#">Alquiler de Autos</a>
+        </div>
+    </nav>
+    <main class="container mt-3">
+        <h5>Seleccione un auto</h5>
+        <div class="row" id="lista"></div>
+    </main>
+    <script>
+    const socket = io();
+    function getButton(codigo, estado){
+        return estado ? `<button onclick="alquilar(${codigo})" class="btn btn-success w-100">Alquilar</button>` : '<button class="btn btn-secondary w-100" disabled>No disponible</button>';
+    }
+    function alquilar(codigo){
+        console.log('alquilar auto: ', codigo);
+        document.getElementById('boton_'+codigo).innerHTML = getButton('',0);
+        // Envio el codigo del auto al servidor
+        // para que este avise a los demás sockets que un auto ha sido alquilado
+        socket.emit('alquiler', codigo);
+    }
+    socket.on('respuesta', (codigo)=>{
+        document.getElementById('boton_'+codigo).innerHTML = getButton('',0);
+    });
+    window.onload = async () => {
+        console.log('pagina ok');
+        try {
+            const response = await axios.get('/autos');
+            console.log(response);
+            let items_html = '';
+            response.data.forEach(auto => {
+                const boton_html = getButton(auto.cod, auto.estado);
+                    items_html +=   `<div class="col-md-4 p-1">
+                                        <div class="card">
+                                            <img src="/img/${auto.imagen}" class="card-img-top" alt="...">
+                                            <div class="card-body text-center">
+                                                <h5 class="card-title">${auto.marca} - ${auto.modelo}</h5>
+                                                <div class="fs-4 text-danger">S/ ${auto.costo}</div>
+                                                <p class="card-text">${auto.anio} - ${auto.caja} - ${auto.combustible}</p>
+                                                <div id="boton_${auto.cod}">
+                                                    ${boton_html}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>`;
+            });
+            document.getElementById('lista').innerHTML=items_html;
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donación Sockets</title>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+<h1>Donación</h1>
+<h2>Total S/ <span id="total">0.00</span></h2>
+<ul id="lista"></ul>
+<p>
+    <input type="text" id="inputNombre" placeholder="Nombre" />
+    <input type="text" id="inputDni" placeholder="DNI" />
+    <input type="number" id="inputMonto" placeholder="Monto" />
+    <button type="button" onclick="enviar()">Enviar Donación</button>
+</p>
+<script>
+const socket = io();
+function enviar(){
+    console.log("Enviando donación...");
+    const cajaNombre = document.getElementById("inputNombre");
+    const cajaDni = document.getElementById("inputDni");
+    const cajaMonto = document.getElementById("inputMonto");
+    const datos = {
+        nombre: cajaNombre.value,
+        dni: cajaDni.value,
+        monto: cajaMonto.value
+    }
+    console.log('Enviar - datos: ', datos);
+    socket.emit("enviar-donacion", datos);
+    cajaNombre.value = '';
+    cajaDni.value = '';
+    cajaMonto.value = ""
+}
+
+// El cliente esta a la escucha del canal respuesta
+socket.on("respuesta", (datos)=>{
+    const lista = document.getElementById("lista");
+    const total = document.getElementById("total");
+    lista.innerHTML += `<li>${datos.persona}</li>`;
+    total.innerHTML = datos.total;
+});
+
+// El cliente esta a la esucha del canal historial
+socket.on("historial", (datos)=>{
+    console.log('historial-datos: ', datos);
+    const lista = document.getElementById("lista");
+    const total = document.getElementById("total");
+    let lista_html = '';
+    datos.donantes.forEach(persona => {
+        lista_html += `<li>${persona}</li>`;
+    });
+    total.innerHTML = datos.total;
+    lista.innerHTML = lista_html;
+});
+</script>
+</body>
+</html>
